@@ -34,3 +34,15 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Secrets / env ###
+.env
+.env.*
+!.env.example
+
+### Logs ###
+*.log
+logs/
+
+### OS ###
+Thumbs.db

@@ -1,0 +1,26 @@
+
+services:
+  rabbitmq:
+    image: rabbitmq:4-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+  repair-db:
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${REPAIR_DB_NAME}
+      POSTGRES_USER: ${REPAIR_DB_USER}
+      POSTGRES_PASSWORD: ${REPAIR_DB_PASSWORD}
+    volumes:
+      - repair_db_data:/var/lib/postgresql/data
+
+volumes:
+  rabbitmq_data:
+  repair_db_data:
